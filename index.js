@@ -26,8 +26,7 @@ module.exports = class TextReact extends Plugin {
                     let zres = res.querySelector('.zci__result'), r = zres.textContent.trim().split('\n')
                     r[1] = `[[${r.pop().trim()}]](${url})`
 
-                    console.log( zres.querySelector('img').getAttribute('src'))
-                    result.author = { name: title.textContent.trim(), url, icon_url: zres.querySelector('img').getAttribute('src') }
+                    result.author = { name: title.textContent.trim(), url }
                     result.description += `${r.join('\n')}\n\n**Search results**\n`
                     delete result.title
                 }
