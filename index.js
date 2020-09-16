@@ -2,7 +2,7 @@ const { Plugin } = require('powercord/entities')
 const { get } = require('powercord/http')
 const Settings = require('./Settings')
 
-module.exports = class TextReact extends Plugin {
+module.exports = class QuickSearch extends Plugin {
     startPlugin() {
         powercord.api.settings.registerSettings('quick-search', {
             category: this.entityID,
@@ -38,7 +38,7 @@ module.exports = class TextReact extends Plugin {
                 res.querySelectorAll('.result>.result__body').forEach((r, i) => {
                     if (i >= this.settings.get('maxResults', 3)) return
                     if (result.description != '') result.description += '\n'
-                    const url = decodeURIComponent(r.querySelector('.result__url').getAttribute('href').replace('/l/?kh=-1&uddg=', ''))
+                    const url = decodeURIComponent(r.querySelector('.result__url').getAttribute('href').replace('//duckduckgo.com/l/?kh=-1&uddg=', ''))
                     result.description += `**[${r.querySelector('.result__a').textContent}](${url})**`
                     result.description += `\n${r.querySelector('.result__snippet').textContent}\n`
                 })
