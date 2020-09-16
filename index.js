@@ -19,7 +19,7 @@ module.exports = class TextReact extends Plugin {
                 if (!args[0]) return { result: 'The search query cannot be empty.' }
 
                 const query = encodeURIComponent(args.join(' ')).replace(/%20/g, '+')
-                const req = await get('https://duckduckgo.com/html').query('q', query)
+                const req = await get('https://html.duckduckgo.com/html').query('q', query)
                 if (req.statusCode != 200) return { result: 'Something went wrong :(' }
                 
                 let result = { type: 'rich', title: 'Search results', description: '', color: 0xe98622 }
